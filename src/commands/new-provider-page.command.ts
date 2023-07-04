@@ -28,6 +28,12 @@ export const newProviderPage = async (uri: Uri) => {
     return;
   }
 
+  var matcher  = RegExp("^\\w{3,20}$");
+  if (matcher.test(pageName) == false) {
+    window.showErrorMessage("The Incorrect name format");
+    return;
+  }
+
   let targetDirectory = uri.fsPath;
 
   const pascalCasepageName = changeCase.pascalCase(pageName.toLowerCase());

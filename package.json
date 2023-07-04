@@ -1,8 +1,8 @@
 {
   "name": "provider-temp-generator",
-  "displayName": "provider_temp_generator",
+  "displayName": "Provider Temp Generator",
   "description": "provider模板生成器",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher":"cheng",
   "icon": "logo.jpg",
   "engines": {

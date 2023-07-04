@@ -18,6 +18,15 @@ function hump2Underline(name: String): String {
         return newString;
     }
 }
+
+function lowercaseline(name: String) : String{
+    let newString = "";
+    var strList = name.split("_");
+    for (let index = 0; index < strList.length; index++) {
+        newString += strList[index].charAt(0).toUpperCase() + strList[index].substring(1);
+    }
+    return newString;
+}
 // export all package
 export function pageNameTemplate(pageName: string, targetDirectory: string) {
     const pathName = changeCase.pascalCase(pageName.toLowerCase());
@@ -48,9 +57,10 @@ export 'state/state.dart';
 
 // bean package
 export function beanTemplate(pageName: string, targetDirectory: string) {
-    const pathName = changeCase.pascalCase(pageName.toLowerCase());
-    const stateName = hump2Underline(pageName);
+    const pathName = lowercaseline(pageName);
+    const stateName = changeCase.snakeCase(pageName.toLowerCase());
     const snakeCaseName = changeCase.snakeCase(pageName.toLowerCase());
+    console.log("pageName:" + pageName + ",pathName:" + pathName + ",stateName:" + stateName + ",snakeCaseName:" + snakeCaseName);
     const targetPath = `${targetDirectory}/${stateName}/bean/bean.dart`;
     const template = `
 
@@ -74,8 +84,8 @@ export function beanTemplate(pageName: string, targetDirectory: string) {
 
 // model package
 export function modelTemplate(pageName: string, targetDirectory: string) {
-    const pathName = changeCase.pascalCase(pageName.toLowerCase());
-    const stateName = hump2Underline(pageName);
+    const pathName = lowercaseline(pageName);
+    const stateName = changeCase.snakeCase(pageName.toLowerCase());
     const snakeCaseName = changeCase.snakeCase(pageName.toLowerCase());
     const targetPath = `${targetDirectory}/${stateName}/model/model.dart`;
     const template = `import 'package:provider_base_tools/tools.dart';
@@ -109,8 +119,8 @@ import '../${pageName}.dart';
 
 // model_contidion package
 export function modelContidionTemplate(pageName: string, targetDirectory: string) {
-    const pathName = changeCase.pascalCase(pageName.toLowerCase());
-    const stateName = hump2Underline(pageName);
+    const pathName = lowercaseline(pageName);
+    const stateName = changeCase.snakeCase(pageName.toLowerCase());
     const snakeCaseName = changeCase.snakeCase(pageName.toLowerCase());
     const targetPath = `${targetDirectory}/${stateName}/model/model_contidion.dart`;
     const template = `import '../${pageName}.dart';
@@ -134,8 +144,8 @@ export function modelContidionTemplate(pageName: string, targetDirectory: string
 
 // model_get package
 export function modelGetTemplate(pageName: string, targetDirectory: string) {
-    const pathName = changeCase.pascalCase(pageName.toLowerCase());
-    const stateName = hump2Underline(pageName);
+    const pathName = lowercaseline(pageName);
+    const stateName = changeCase.snakeCase(pageName.toLowerCase());
     const snakeCaseName = changeCase.snakeCase(pageName.toLowerCase());
     const targetPath = `${targetDirectory}/${stateName}/model/model_get.dart`;
     const template = `import 'model.dart';
@@ -159,8 +169,8 @@ export function modelGetTemplate(pageName: string, targetDirectory: string) {
 
 // model_set package
 export function modelSetTemplate(pageName: string, targetDirectory: string) {
-    const pathName = changeCase.pascalCase(pageName.toLowerCase());
-    const stateName = hump2Underline(pageName);
+    const pathName = lowercaseline(pageName);
+    const stateName = changeCase.snakeCase(pageName.toLowerCase());
     const snakeCaseName = changeCase.snakeCase(pageName.toLowerCase());
     const targetPath = `${targetDirectory}/${stateName}/model/model_set.dart`;
     const template = `import 'model.dart';
@@ -184,8 +194,8 @@ export function modelSetTemplate(pageName: string, targetDirectory: string) {
 
 // view package
 export function viewTemplate(pageName: string, targetDirectory: string) {
-    const pathName = changeCase.pascalCase(pageName.toLowerCase());
-    const stateName = hump2Underline(pageName);
+    const pathName = lowercaseline(pageName);
+    const stateName = changeCase.snakeCase(pageName.toLowerCase());
     const snakeCaseName = changeCase.snakeCase(pageName.toLowerCase());
     const targetPath = `${targetDirectory}/${stateName}/page/view.dart`;
     const template = `import 'package:flutter/material.dart';
@@ -225,8 +235,8 @@ import '../${stateName}.dart';
 
 // widget package
 export function widgetTemplate(pageName: string, targetDirectory: string) {
-    const pathName = changeCase.pascalCase(pageName.toLowerCase());
-    const stateName = hump2Underline(pageName);
+    const pathName = lowercaseline(pageName);
+    const stateName = changeCase.snakeCase(pageName.toLowerCase());
     const snakeCaseName = changeCase.snakeCase(pageName.toLowerCase());
     const targetPath = `${targetDirectory}/${stateName}/page/widget.dart`;
     const template = `import 'package:flutter/material.dart';
@@ -253,8 +263,8 @@ import '../${stateName}.dart';
 
 // state package
 export function stateTemplate(pageName: string, targetDirectory: string) {
-    const pathName = changeCase.pascalCase(pageName.toLowerCase());
-    const stateName = hump2Underline(pageName);
+    const pathName = lowercaseline(pageName);
+    const stateName = changeCase.snakeCase(pageName.toLowerCase());
     const snakeCaseName = changeCase.snakeCase(pageName.toLowerCase());
     const targetPath = `${targetDirectory}/${stateName}/state/state.dart`;
     const template = `
