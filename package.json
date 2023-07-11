@@ -1,8 +1,8 @@
 {
   "name": "provider-temp-generator",
   "displayName": "Provider Temp Generator",
-  "description": "provider模板生成器",
-  "version": "0.0.3",
+  "description": "Used to generate the template code of provider framework",
+  "version": "0.0.4",
   "publisher":"cheng",
   "icon": "logo.jpg",
   "engines": {
@@ -21,6 +21,14 @@
       },{
         "command": "extension.new-provider-page",
         "title": "☆ Provider: ProviderBuilder Page"
+      },
+      {
+        "command": "extension.new-provider-stateful-page",
+        "title": "☆ Provider: stateful-ProviderBuilder Page"
+      },
+      {
+        "command": "extension.new-provider-stateless-page",
+        "title": "☆ Provider: stateless-ProviderBuilder Page"
       }
     ],
     "menus": {
@@ -28,6 +36,14 @@
         "when": "explorerResourceIsFolder",
         "command": "extension.new-provider-page",
         "group": "blocGroup@1"
+      },{
+        "when": "explorerResourceIsFolder",
+        "command": "extension.new-provider-stateful-page",
+        "group": "blocGroup@2"
+      },{
+        "when": "explorerResourceIsFolder",
+        "command": "extension.new-provider-stateless-page",
+        "group": "blocGroup@3"
       }]
     }
   },

@@ -10,12 +10,12 @@ import {
   modelContidionTemplate,
   modelGetTemplate,
   modelSetTemplate,
-  viewTemplate,
+  statelessTemplate,
   widgetTemplate,
   stateTemplate,
-} from "../templates/provider-page.template";
+} from "../templates/provider-stateless.template";
 
-export const newProviderPage = async (uri: Uri) => {
+export const newProviderStatelessPage = async (uri: Uri) => {
   console.log(uri);
   const pageName = await promptForPageName();
   if (_.isNil(pageName) || pageName.trim() === "") {
@@ -106,7 +106,7 @@ async function generateCode(pageName: string, targetDirectory: string) {
       modelContidionTemplate(pageName, targetDirectory),
       modelGetTemplate(pageName, targetDirectory),
       modelSetTemplate(pageName, targetDirectory),
-      viewTemplate(pageName, targetDirectory),
+      statelessTemplate(pageName, targetDirectory),
       widgetTemplate(pageName, targetDirectory),
       stateTemplate(pageName, targetDirectory),
     ]);

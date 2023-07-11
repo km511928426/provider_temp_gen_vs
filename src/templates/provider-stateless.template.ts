@@ -10,8 +10,7 @@ function hump2Underline(name: String): String {
 
 }
 
-
-function lowercaseline(name: String) : String{
+function lowercaseline(name: String): String {
     let newString = "";
     var strList = name.split("_");
     for (let index = 0; index < strList.length; index++) {
@@ -54,11 +53,10 @@ export function beanTemplate(pageName: string, targetDirectory: string) {
     const targetPath = `${targetDirectory}/${stateName}/bean/bean.dart`;
     const template = `
 
-  class ${pathName}Bean {
-
-    ${pathName}Bean();
-    
-  }
+class ${pathName}Bean {
+  ${pathName}Bean();
+  
+}
 `;
 
     return new Promise(async (resolve, reject) => {
@@ -78,20 +76,13 @@ export function modelTemplate(pageName: string, targetDirectory: string) {
     const stateName = changeCase.snakeCase(pageName.toLowerCase());
     const snakeCaseName = changeCase.snakeCase(pageName.toLowerCase());
     const targetPath = `${targetDirectory}/${stateName}/model/model.dart`;
-    const template = `import 'package:provider_base_tools/tools.dart';
+    const template = `import 'package:flutter/foundation.dart';
+import 'package:provider/provider.dart';
 
-import '../${pageName}.dart';
+import '../${stateName}.dart';
   
-  class ${pathName}Model extends BaseModel<${pathName}State> {
-    ${pathName}Model.getInstance(super.initial) : super.getInstance();
-  
-    @override
-    bool get dataIsEmpty => false;
-  
-    @override
-    List<VoidAsyncFunction> initFutures() {
-      return [];
-    }
+class ${pathName}Model with ChangeNotifier,DiagnosticableTreeMixin{
+    final state = ${pathName}State();
   }
 `;
 
@@ -115,9 +106,9 @@ export function modelContidionTemplate(pageName: string, targetDirectory: string
     const targetPath = `${targetDirectory}/${stateName}/model/model_contidion.dart`;
     const template = `import '../${pageName}.dart';
 
-    extension ${pathName}ModelContidion on ${pathName}Model {
-      
-    }
+extension ${pathName}ModelContidion on ${pathName}Model {
+  
+}
 `;
 
     return new Promise(async (resolve, reject) => {
@@ -132,17 +123,18 @@ export function modelContidionTemplate(pageName: string, targetDirectory: string
     });
 }
 
+
 // model_get package
 export function modelGetTemplate(pageName: string, targetDirectory: string) {
     const pathName = lowercaseline(pageName);
     const stateName = changeCase.snakeCase(pageName.toLowerCase());
     const snakeCaseName = changeCase.snakeCase(pageName.toLowerCase());
     const targetPath = `${targetDirectory}/${stateName}/model/model_get.dart`;
-    const template = `import 'model.dart';
+    const template = `import '../${stateName}.dart';
 
-    extension ${pathName}ModelGet on ${pathName}Model {
-      
-    }
+extension ${pathName}ModelGet on ${pathName}Model {
+  
+}
 `;
 
     return new Promise(async (resolve, reject) => {
@@ -163,11 +155,11 @@ export function modelSetTemplate(pageName: string, targetDirectory: string) {
     const stateName = changeCase.snakeCase(pageName.toLowerCase());
     const snakeCaseName = changeCase.snakeCase(pageName.toLowerCase());
     const targetPath = `${targetDirectory}/${stateName}/model/model_set.dart`;
-    const template = `import 'model.dart';
+    const template = `import '../${stateName}.dart';
 
-    extension ${pathName}ModelSet on ${pathName}Model {
-      
-    }
+extension ${pathName}ModelSet on ${pathName}Model {
+  
+}
 `;
 
     return new Promise(async (resolve, reject) => {
@@ -183,32 +175,27 @@ export function modelSetTemplate(pageName: string, targetDirectory: string) {
 }
 
 // view package
-export function viewTemplate(pageName: string, targetDirectory: string) {
+export function statelessTemplate(pageName: string, targetDirectory: string) {
     const pathName = lowercaseline(pageName);
     const stateName = changeCase.snakeCase(pageName.toLowerCase());
     const snakeCaseName = changeCase.snakeCase(pageName.toLowerCase());
     const targetPath = `${targetDirectory}/${stateName}/page/view.dart`;
     const template = `import 'package:flutter/material.dart';
-import 'package:provider_base_tools/tools.dart';
+import 'package:provider/provider.dart';
     
 import '../${stateName}.dart';
     
-    class ${pathName}Page extends InitBaseStatelessWidget<${pathName}Model,${pathName}State> {
-      const ${pathName}Page({super.key});
-    
-      @override
-      void finish() {}
-    
-      @override
-      ${pathName}Model getModel() {
-        return ${pathName}Model.getInstance(${pathName}State());
-      }
-    
-      @override
-      Widget successedBuilder(BuildContext context) {
-        return getChildView();
-      }
+class ${pathName}Page extends StatelessWidget {
+    const ${pathName}Page({Key? key}) : super(key: key);
+  
+    @override
+    Widget build(BuildContext context) {
+      return ChangeNotifierProvider<${pathName}Model>.value(
+          value: ${pathName}Model(),
+          child: getChildView(context),
+      );
     }
+}
 `;
 
     return new Promise(async (resolve, reject) => {
@@ -223,6 +210,7 @@ import '../${stateName}.dart';
     });
 }
 
+
 // widget package
 export function widgetTemplate(pageName: string, targetDirectory: string) {
     const pathName = lowercaseline(pageName);
@@ -233,10 +221,10 @@ export function widgetTemplate(pageName: string, targetDirectory: string) {
 
 import '../${stateName}.dart';
     
-    extension ${pathName}Widget on ${pathName}Page {
-      
-      Widget getChildView() => throw UnimplementedError();
-    }
+extension ${pathName}Widget on ${pathName}Page {
+  
+  Widget getChildView(BuildContext context) => throw UnimplementedError();
+}
 `;
 
     return new Promise(async (resolve, reject) => {
@@ -259,10 +247,10 @@ export function stateTemplate(pageName: string, targetDirectory: string) {
     const targetPath = `${targetDirectory}/${stateName}/state/state.dart`;
     const template = `
 
-    class ${pathName}State{
-        ${pathName}State({this.tag});
-        String? tag;
-     }
+class ${pathName}State{
+    ${pathName}State({this.tag});
+    String? tag;
+ }
 `;
 
     return new Promise(async (resolve, reject) => {
