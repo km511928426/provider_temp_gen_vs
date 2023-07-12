@@ -10,6 +10,10 @@
 
 ## [0.0.5] - 2023-07-04
 
+- delete the get set file
+
+## [0.0.5] - 2023-07-04
+
 - Modify the Naming convention and delete the get set method
 
 ## [0.0.4] - 2023-07-04

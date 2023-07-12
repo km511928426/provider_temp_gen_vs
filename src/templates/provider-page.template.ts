@@ -132,55 +132,55 @@ export function modelContidionTemplate(pageName: string, targetDirectory: string
     });
 }
 
-// model_get package
-export function modelGetTemplate(pageName: string, targetDirectory: string) {
-    const pathName = lowercaseline(pageName);
-    const stateName = changeCase.snakeCase(pageName.toLowerCase());
-    const snakeCaseName = changeCase.snakeCase(pageName.toLowerCase());
-    const targetPath = `${targetDirectory}/${stateName}/model/model_get.dart`;
-    const template = `import 'model.dart';
+// // model_get package
+// export function modelGetTemplate(pageName: string, targetDirectory: string) {
+//     const pathName = lowercaseline(pageName);
+//     const stateName = changeCase.snakeCase(pageName.toLowerCase());
+//     const snakeCaseName = changeCase.snakeCase(pageName.toLowerCase());
+//     const targetPath = `${targetDirectory}/${stateName}/model/model_get.dart`;
+//     const template = `import 'model.dart';
 
-    extension ${pathName}ModelGet on ${pathName}Model {
+//     extension ${pathName}ModelGet on ${pathName}Model {
       
-    }
-`;
+//     }
+// `;
 
-    return new Promise(async (resolve, reject) => {
+//     return new Promise(async (resolve, reject) => {
 
-        writeFile(targetPath, template, 'utf8', (error) => {
-            if (error) {
-                reject(error);
-                return;
-            }
-            resolve;
-        });
-    });
-}
+//         writeFile(targetPath, template, 'utf8', (error) => {
+//             if (error) {
+//                 reject(error);
+//                 return;
+//             }
+//             resolve;
+//         });
+//     });
+// }
 
-// model_set package
-export function modelSetTemplate(pageName: string, targetDirectory: string) {
-    const pathName = lowercaseline(pageName);
-    const stateName = changeCase.snakeCase(pageName.toLowerCase());
-    const snakeCaseName = changeCase.snakeCase(pageName.toLowerCase());
-    const targetPath = `${targetDirectory}/${stateName}/model/model_set.dart`;
-    const template = `import 'model.dart';
+// // model_set package
+// export function modelSetTemplate(pageName: string, targetDirectory: string) {
+//     const pathName = lowercaseline(pageName);
+//     const stateName = changeCase.snakeCase(pageName.toLowerCase());
+//     const snakeCaseName = changeCase.snakeCase(pageName.toLowerCase());
+//     const targetPath = `${targetDirectory}/${stateName}/model/model_set.dart`;
+//     const template = `import 'model.dart';
 
-    extension ${pathName}ModelSet on ${pathName}Model {
+//     extension ${pathName}ModelSet on ${pathName}Model {
       
-    }
-`;
+//     }
+// `;
 
-    return new Promise(async (resolve, reject) => {
+//     return new Promise(async (resolve, reject) => {
 
-        writeFile(targetPath, template, 'utf8', (error) => {
-            if (error) {
-                reject(error);
-                return;
-            }
-            resolve;
-        });
-    });
-}
+//         writeFile(targetPath, template, 'utf8', (error) => {
+//             if (error) {
+//                 reject(error);
+//                 return;
+//             }
+//             resolve;
+//         });
+//     });
+// }
 
 // view package
 export function viewTemplate(pageName: string, targetDirectory: string) {

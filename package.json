@@ -2,7 +2,7 @@
   "name": "provider-temp-generator",
   "displayName": "Provider Temp Generator",
   "description": "Used to generate the template code of provider framework",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "publisher":"cheng",
   "icon": "logo.png",
   "engines": {
