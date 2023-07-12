@@ -3,10 +3,14 @@
  * @Version: 1.0
  * @Date: 2023-06-29 16:18:39
  * @LastEditors: cheng
- * @LastEditTime: 2023-07-11 17:39:18
+ * @LastEditTime: 2023-07-12 15:06:35
  * @FilePath: \provider-temp-generator\CHANGELOG.md
  * @ObjectDescription: 
 -->
+
+## [0.0.5] - 2023-07-04
+
+- Modify the Naming convention and delete the get set method
 
 ## [0.0.4] - 2023-07-04
 

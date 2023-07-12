@@ -31,8 +31,6 @@
     file generated ==> ./test/bean/bean.dart
     file generated ==> ./test/model/model.dart
     file generated ==> ./test/model/model_contidion.dart
-    file generated ==> ./test/model/model_get.dart
-    file generated ==> ./test/model/model_set.dart
     file generated ==> ./test/page/view.dart
     file generated ==> ./test/page/widget.dart
     file generated ==> ./test/state/state.dart

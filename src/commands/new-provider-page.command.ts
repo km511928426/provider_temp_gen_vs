@@ -33,7 +33,7 @@ export const newProviderPage = async (uri: Uri) => {
     return;
   }
 
-  var matcher  = RegExp("^\\w{3,50}$");
+  var matcher  = RegExp("^[a-z][a-z_]{3,50}$");
   if (matcher.test(pageName) == false) {
     window.showErrorMessage("The Incorrect name format");
     return;
