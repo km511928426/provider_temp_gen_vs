@@ -192,7 +192,7 @@ class ${pathName}Page extends StatelessWidget {
     Widget build(BuildContext context) {
       return ChangeNotifierProvider<${pathName}Model>.value(
           value: ${pathName}Model(),
-          child: getChildView(context),
+          builder: (context, child) => getChildView(context),
       );
     }
 }

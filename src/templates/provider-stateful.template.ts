@@ -199,7 +199,7 @@ class ${pathName}Page extends StatefulWidget {
     Widget build(BuildContext context) {
       return ChangeNotifierProvider<${pathName}Model>.value(
         value: ${pathName}Model(),
-        child: widget.getChildView(context),
+        builder: (context, child) => widget.getChildView(context),
       );
     }
   }
